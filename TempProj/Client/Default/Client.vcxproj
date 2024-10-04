@@ -1,0 +1,1676 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1BCC3333-B618-4C65-B874-3A797214F960}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Client</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <EnableUnitySupport>true</EnableUnitySupport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <EnableUnitySupport>true</EnableUnitySupport>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 12.0.props" />
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\Bin\debug\</OutDir>
+    <MultiProcFXC>true</MultiProcFXC>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\Bin\release\</OutDir>
+    <MultiProcFXC>true</MultiProcFXC>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>../../Reference/Headers/;../Public/;$(CUDA_PATH);$(CUDA_PATH)\include;../Default/</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <ConformanceMode>Default</ConformanceMode>
+      <MinFilesInUnityFile>2</MinFilesInUnityFile>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <UnityFilesDirectory>$(ProjectDir)</UnityFilesDirectory>
+      <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>DebugFastLink</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../../Reference/Librarys/;$(CUDA_PATH)/lib/x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Engine.lib;cudart.lib;pdh.lib;imguid.lib;DirectXTKd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <FxCompile>
+      <EntryPointName>VS_MAIN</EntryPointName>
+    </FxCompile>
+    <FxCompile>
+      <ShaderType>Effect</ShaderType>
+    </FxCompile>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+    </FxCompile>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <CudaCompile>
+      <Runtime>MDd</Runtime>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_75,sm_75</CodeGeneration>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>../../Reference/Headers/;../Public/;$(CUDA_PATH);$(CUDA_PATH)\include;../Default/</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <ConformanceMode>true</ConformanceMode>
+      <UnityFilesDirectory>$(ProjectDir)</UnityFilesDirectory>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>DebugFastLink</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../../Reference/Librarys/;$(CUDA_PATH)/lib/x64</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Engine.lib;cudart.lib;pdh.lib;imgui.lib;DirectXTK.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <FxCompile>
+      <EntryPointName>VS_MAIN</EntryPointName>
+    </FxCompile>
+    <FxCompile>
+      <ShaderType>Effect</ShaderType>
+    </FxCompile>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+    </FxCompile>
+    <CudaCompile>
+      <Runtime>MD</Runtime>
+      <GenerateRelocatableDeviceCode>true</GenerateRelocatableDeviceCode>
+      <CodeGeneration>compute_75,sm_75</CodeGeneration>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Bin\ShaderFiles\Client_Shader_Defines.hpp" />
+    <ClInclude Include="..\Bin\ShaderFiles\Engine_Shader_Defines.hpp" />
+    <ClInclude Include="..\Private\Player_HPBar_Default.h" />
+    <ClInclude Include="..\Public\Actor.h" />
+    <ClInclude Include="..\Public\ActorDecor.h" />
+    <ClInclude Include="..\Public\AIStateBase.h" />
+    <ClInclude Include="..\Public\Attack_Area.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_AttackComboB1.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_AttackComboB2.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_AttackComboB3.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_AttackComboC1.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_AttackComboC2.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Attacks.h" />
+    <ClInclude Include="..\Public\CNvClothCollider.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_PS.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_PS_BatRoar_Upgrade.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_PS_BigHand.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_PS_BigHand_End.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_PS_Halberds.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_PS_Halberds_Upgrade.h" />
+    <ClInclude Include="..\Public\CorvusStates\StateExecution\CorvusState_Armor_Execution_01.h" />
+    <ClInclude Include="..\Public\CorvusStates\StateExecution\CorvusState_Armor_Execution_02.h" />
+    <ClInclude Include="..\Public\CorvusStates\StateExecution\CorvusState_AromorLV1_Execution.h" />
+    <ClInclude Include="..\Public\CorvusStates\StateExecution\CorvusState_AromorLV1_NCamera_Execution.h" />
+    <ClInclude Include="..\Public\CorvusStates\StateExecution\CorvusState_BigHandman_Execution.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_PS_BatRoar.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_PS_CaneSword_Start.h" />
+    <ClInclude Include="..\Public\CorvusStates\StateExecution\CorvusState_LV1M_Execution.h" />
+    <ClInclude Include="..\Public\CorvusStates\StateExecution\CorvusState_LV2M_Execution.h" />
+    <ClInclude Include="..\Public\Effect_AttackArea.h" />
+    <ClInclude Include="..\Public\Ballon.h" />
+    <ClInclude Include="..\Public\BossBat\Bat.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossStateBase.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Atk_L01_1.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Atk_L01_2a.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Atk_L01_2b.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Atk_L01_3a.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Atk_R01_1.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Atk_R01_2a.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Atk_R01_2b.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_AttackIdle.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_BackJump.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Bite_1.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Bite_2.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Car.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Charge.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_ChargeIdle.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_FTurnL.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_FTurnR.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_HellIdle.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Hellscream.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_HurtXL_F.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_HurtXL_L.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Idle.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_IdleStates.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_JumpSmash_Chest.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_JumpSmash_ForwardL.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_JumpSmash_SmarhL.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_SonicBoom.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_SonicBullet.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Sp.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Start.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Start_Loop.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Storm.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Stun_End.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Stun_Loop.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_Stun_Start.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_TakeExecution_End.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_TakeExecution_Loop.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_TakeExecution_Start.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_TurnL.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_TurnR.h" />
+    <ClInclude Include="..\Public\BossBat\BatBossState_WalkF.h" />
+    <ClInclude Include="..\Public\BossBat\BatStates.h" />
+    <ClInclude Include="..\Public\BossUrd\Urd.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossStateBase.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Attack01.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Attack01LV2.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Attack02.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Attack02LV2C0.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Attack02LV2C1.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Attack03_DashSting_L.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Attack03_DashSting_R.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Attack05.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Attack06.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Attack07.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Attack_Idle.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Dead.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Equip_L.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Equip_R.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_FightStart.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_HurtCounter.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_HurtM_FL.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_HurtM_FR.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_HurtS_FL.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_HurtS_FR.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Idle.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_IdleStates.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Parry_L.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Parry_R.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Parry_RQuick.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Run.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Skill01.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Skill02_1.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Skill03_L.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Skill03_R.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Skill_Idle.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_SPSkill01.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Start.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_StepB.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_StepFL.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_StepFL45.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_StepFR.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_StepFR45.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_StepL.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_StepR.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Step_Idle.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_StunEnd.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_StunLoop.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_StunStart.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_TurnL.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_TurnR.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_VS_TakeExecution.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_WalkB.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_WalkBL.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_WalkBR.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_WalkF.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_WalkFL.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_WalkFR.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_WalkL.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_WalkR.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdBossState_Walk_Idle.h" />
+    <ClInclude Include="..\Public\BossUrd\UrdStates.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Attack2b1.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Attack2b2.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_IdleGeneral.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_RaidAttack.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_TurnAttack.h" />
+    <ClInclude Include="..\Public\ClientComponent_Utils.h" />
+    <ClInclude Include="..\Public\Client_Functions.h" />
+    <ClInclude Include="..\Public\Client_Enum.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_AVoidB.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_AVoidF.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_AVoidL.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_AVoidR.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_AVoidSlash.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_AVoidThrust.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_CheckPointEnd.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_CheckPointLoop.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_CheckPointStart.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_ClawAttackHoldLoop.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_ClawAttackTab.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_ClawPlunderAttack.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Climb_Fall_Attack.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Climb_L_Down.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Climb_L_Down_End.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Climb_L_Idle.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Climb_L_UP.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Climb_L_Up_Down_End.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Climb_L_UP_End.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Climb_R_Down.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Climb_R_Down_End.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Climb_R_Idle.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Climb_R_UP.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Climb_R_Up_Down_End.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Climb_R_UP_End.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Climb_Start.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Fall_End.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Fall_Loop.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Fall_Start.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_FeatherAttack.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Getup.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Headache_End.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Headache_Loop.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Headache_Start.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_HurtBlown.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_HurtFallDown.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_HurtFallDownEnd.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_HurtXL.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_KnockBack.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_LAttack5.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_LongHealing.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Long_AvoidB.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Long_AvoidF.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Long_AvoidL.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Long_AvoidR.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Parry1.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Parry2.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_ParryDeflectLeft.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_ParryDeflectLeftup.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_ParryDeflectRight.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_ParryDeflectRightup.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_PS_Axe.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_PS_CaneSword.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_PS_Hammer.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_PS_Hammer_Upgrade.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_PS_Knife.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_PS_Magician.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_PS_Scythe.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_PS_Scythe_Upgrade.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_PS_UrdSword.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_PS_VargSword.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_PS_VargSwordStart.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_RunB.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_RunBL.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_RunBR.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_RunFL.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_RunFR.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_RunL.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_RunR.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_ShortAvoid.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_ShortHealing.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Short_AvoidB.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Short_AvoidF.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Short_AvoidL.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Short_AvoidR.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Short_Claw_Atk1.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Short_Claw_Atk2.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Short_Claw_Atk3.h" />
+    <ClInclude Include="..\Public\CorvusStates\StateExecution\CorvusState_Bat_Execution.h" />
+    <ClInclude Include="..\Public\CorvusStates\StateExecution\CorvusState_Execution_R_R.h" />
+    <ClInclude Include="..\Public\CorvusStates\StateExecution\CorvusState_Execution_Start.h" />
+    <ClInclude Include="..\Public\CorvusStates\StateExecution\CorvusState_Joker_Execution.h" />
+    <ClInclude Include="..\Public\CorvusStates\StateExecution\CorvusState_RaidAttack1Hurt.h" />
+    <ClInclude Include="..\Public\CorvusStates\StateExecution\CorvusState_Urd_Execution.h" />
+    <ClInclude Include="..\Public\CorvusStates\StateExecution\CorvusState_Varg_Execution.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Abundant_FeadtherLV1.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Abundant_FeadtherLV2.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Abundant_FeadtherLV3.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_AvoidLv1.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_AvoidSlashLV1.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_AvoidSlashLV2.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_AvoidThrustLV2.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_EnergisedWeaponLV1.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_EnergisedWeaponLV2.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Execution.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Feadther_FlyingLV1.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Feadther_FlyingLV2.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Feadther_FlyingLV3.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Feadther_FlyingLV4.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Growing_FeadtherLV1.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Growing_FeadtherLV2.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Growing_FeadtherLV3.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_HealingExecutionLV1.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_HealingExecutionLV2.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_JumpAttackLV1.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_jumpAttackLV2.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_JumpAttackLV3.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Long_AvoidLv1.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Long_AvoidLv2.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Long_ClawLv1.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Long_ClawLv2.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Long_ClawLv3.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_NorSwordLV1.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_NorSwordLV2.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_AvoidThrustLV1.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_ParringLv1.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_ParringLv2.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_PredatorLv1.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_PredatorLv2.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Reckless_ParringLv1.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Reckless_ParringLv2.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_SharpWeaponLV1.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_SharpWeaponLV2.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Short_AvoidLv1.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Short_AvoidLv2.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Short_ClawLv1.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Effect_Short_ClawLv2.h" />
+    <ClInclude Include="..\Public\CorvusStates\Talent_Sword.h" />
+    <ClInclude Include="..\Public\DeveloperConsole_Manager.h" />
+    <ClInclude Include="..\Public\Dynamic_Piece.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_ClawAttackAway.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_ClawAttackHold.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_ClawAttackTab2.h" />
+    <ClInclude Include="..\Public\EasingComponent.h" />
+    <ClInclude Include="..\Public\EasingComponent_Alpha.h" />
+    <ClInclude Include="..\Public\EasingComponent_Bezier.h" />
+    <ClInclude Include="..\Public\EasingComponent_Float.h" />
+    <ClInclude Include="..\Public\EasingComponent_Transform.h" />
+    <ClInclude Include="..\Public\EditEventContoller.h" />
+    <ClInclude Include="..\Public\EditMapCollider.h" />
+    <ClInclude Include="..\Public\EditSetActor.h" />
+    <ClInclude Include="..\Public\Effect_Decal.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandMan.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManStateBase.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManStates.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManState_ComboA01.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManState_ComboA02.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManState_ComboB_End.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManState_ComboB_Loop.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManState_ComboB_Start.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManState_HurtCounter.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManState_HurtL.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManState_HurtR.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManState_Idle.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManState_SP_Idle1.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManState_SP_Idle1_End.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManState_Stun_End.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManState_Stun_Loop.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManState_Stun_Start.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManState_TurnL90.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManState_TurnR90.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManState_VS_TakeExecution_01.h" />
+    <ClInclude Include="..\Public\EliteMonState\BigHandMan\BigHandManState_Walk.h" />
+    <ClInclude Include="..\Public\EliteMonState\EliteStateBase.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\Joker.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_ComboA1.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_ComboA2.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_ComboB1.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_ComboB2.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_Dead.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_Execution_End.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_Execution_Loop.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_Execution_Start.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_Idle.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_JumpAttack.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_RunAtkEnd.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_RunAtkLoop.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_RunAtkStart.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_ShockAttack.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_Sp_Open.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_StrongAttack.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_Stun_End.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_Stun_Loop.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_Stun_Start.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_TurnAtkL.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_TurnAtkR.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_TurnL90.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_TurnR90.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_WalkB.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_WalkF.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_WalkL.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_WalkR.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_WheelAtkEnd.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_WheelAtkEnd2.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_WheelAtkLoop.h" />
+    <ClInclude Include="..\Public\EliteMonState\Joker\JokerState_WheelAtkStart.h" />
+    <ClInclude Include="..\Public\EliteMonster.h" />
+    <ClInclude Include="..\Public\Fog.h" />
+    <ClInclude Include="..\Public\Interaction_Aisemy.h" />
+    <ClInclude Include="..\Public\Interaction_CastleGate.h" />
+    <ClInclude Include="..\Public\Interaction_Chair.h" />
+    <ClInclude Include="..\Public\Interaction_CheckPoint.h" />
+    <ClInclude Include="..\Public\Interaction_DeadSpot.h" />
+    <ClInclude Include="..\Public\Interaction_Door.h" />
+    <ClInclude Include="..\Public\Interaction_Dynamic_Prop.h" />
+    <ClInclude Include="..\Public\Interaction_Elevator.h" />
+    <ClInclude Include="..\Public\Camera_Interior.h" />
+    <ClInclude Include="..\Public\Interaction_InteriorActivate.h" />
+    <ClInclude Include="..\Public\Interaction_MapTable.h" />
+    <ClInclude Include="..\Public\InteriorProp.h" />
+    <ClInclude Include="..\Public\JavelinWeapon.h" />
+    <ClInclude Include="..\Public\JokerStateBase.h" />
+    <ClInclude Include="..\Public\Level_Home.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_HeavyAttack4.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_HeavyAttack5.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_Idle2Fight.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_Petrol.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_SpecialAttackEnd.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_SpecialAttackLoop.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_Suprise_Attack.h" />
+    <ClInclude Include="..\Public\PhysXColliderObject_Interior.h" />
+    <ClInclude Include="..\Public\Preset_NvClothCollider.h" />
+    <ClInclude Include="..\Public\Preset_ShaderPass.h" />
+    <ClInclude Include="..\Public\PreView_InteriorProp.h" />
+    <ClInclude Include="..\Public\Prop_Fence.h" />
+    <ClInclude Include="..\Public\Interaction_Item.h" />
+    <ClInclude Include="..\Public\Interaction_Ladder.h" />
+    <ClInclude Include="..\Public\Interaction_NextPoint.h" />
+    <ClInclude Include="..\Public\Interaction_Note.h" />
+    <ClInclude Include="..\Public\Inventory.h" />
+    <ClInclude Include="..\Public\InventorySorter.h" />
+    <ClInclude Include="..\Public\Item.h" />
+    <ClInclude Include="..\Public\ItemPopup_Queue.h" />
+    <ClInclude Include="..\Public\JokerStates.h" />
+    <ClInclude Include="..\Public\JokerWeapon.h" />
+    <ClInclude Include="..\Public\Level_Stage2.h" />
+    <ClInclude Include="..\Public\Level_Test.h" />
+    <ClInclude Include="..\Public\MonsterParryingBar.h" />
+    <ClInclude Include="..\Public\PhysXCameraController.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Public\NorMonState\NorMonState_Parry.h" />
+    <ClInclude Include="..\Public\PhysXCharacterController.h" />
+    <ClInclude Include="..\Public\PhysXColliderObject.h" />
+    <ClInclude Include="..\Public\BossMonster.h" />
+    <ClInclude Include="..\Public\BossStateBase.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Die.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_HurtL.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_HurtR.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_HurtXXL.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_LAttack4.h" />
+    <ClInclude Include="..\Public\CorvusStates\StateExecution\CorvusState_NorMob_Execution.h" />
+    <ClInclude Include="..\Public\Effect_Trail.h" />
+    <ClInclude Include="..\Public\Effect_Trail_Distortion.h" />
+    <ClInclude Include="..\Public\Effect_Trail_EyeLight.h" />
+    <ClInclude Include="..\Public\MobWeapon.h" />
+    <ClInclude Include="..\Public\PlayerSkillHeader.h" />
+    <ClInclude Include="..\Public\PlayerSkill_System.h" />
+    <ClInclude Include="..\Public\PlayerUI_Defines.h" />
+    <ClInclude Include="..\Public\Player_ItemSkillCollection.h" />
+    <ClInclude Include="..\Public\Preset_AddGameObject.h" />
+    <ClInclude Include="..\Public\Preset_DynamicProp.h" />
+    <ClInclude Include="..\Public\Preset_ItemData.h" />
+    <ClInclude Include="..\Public\Preset_NvClothMesh.h" />
+    <ClInclude Include="..\Public\Preset_UIDesc.h" />
+    <ClInclude Include="..\Public\RequirementBase.h" />
+    <ClInclude Include="..\Public\RequirementChecker.h" />
+    <ClInclude Include="..\Public\Requirement_PlayerStatusMana.h" />
+    <ClInclude Include="..\Public\Requirement_Once.h" />
+    <ClInclude Include="..\Public\Requirement_State.h" />
+    <ClInclude Include="..\Public\Requirement_Time.h" />
+    <ClInclude Include="..\Public\Section_Eventer.h" />
+    <ClInclude Include="..\Public\Skill_Axe.h" />
+    <ClInclude Include="..\Public\Skill_Bankai.h" />
+    <ClInclude Include="..\Public\Skill_base.h" />
+    <ClInclude Include="..\Public\Skill_BigHand.h" />
+    <ClInclude Include="..\Public\Skill_BloodStorm.h" />
+    <ClInclude Include="..\Public\Skill_Hammer.h" />
+    <ClInclude Include="..\Public\Skill_Halberds.h" />
+    <ClInclude Include="..\Public\Skill_Knife.h" />
+    <ClInclude Include="..\Public\Skill_Scythe.h" />
+    <ClInclude Include="..\Public\Skill_VargSword.h" />
+    <ClInclude Include="..\Public\State_Monster.h" />
+    <ClInclude Include="..\Public\State_Player.h" />
+    <ClInclude Include="..\Public\Static_InteriorProp.h" />
+    <ClInclude Include="..\Public\Status_Boss.h" />
+    <ClInclude Include="..\Public\Status_Monster.h" />
+    <ClInclude Include="..\Public\Status_Player.h" />
+    <ClInclude Include="..\Public\Preset_PhysXControllerDesc.h" />
+    <ClInclude Include="..\Public\StolenSkill.h" />
+    <ClInclude Include="..\Public\TargetCurve.h" />
+    <ClInclude Include="..\Public\TestUI.h" />
+    <ClInclude Include="..\Public\TransformUtils.h" />
+    <ClInclude Include="..\Public\UIHeaders.h" />
+    <ClInclude Include="..\Public\UIManager.h" />
+    <ClInclude Include="..\Public\UI_AppearEventVarg.h" />
+    <ClInclude Include="..\Public\UI_BloodOverlay.h" />
+    <ClInclude Include="..\Public\UI_Button.h" />
+    <ClInclude Include="..\Public\Talent_Effects.h" />
+    <ClInclude Include="..\Public\UI_Container.h" />
+    <ClInclude Include="..\Public\UI_Containers.h" />
+    <ClInclude Include="..\Public\UI_Cursor.h" />
+    <ClInclude Include="..\Public\UI_CustomEffect.h" />
+    <ClInclude Include="..\Public\UI_DamageFont.h" />
+    <ClInclude Include="..\Public\UI_DamageFontPiece.h" />
+    <ClInclude Include="..\Public\UI_EffectBase.h" />
+    <ClInclude Include="..\Public\UI_EffectGroup_SkillOpen.h" />
+    <ClInclude Include="..\Public\UI_EffectHeaders.h" />
+    <ClInclude Include="..\Public\UI_Effect_FadeBackground.h" />
+    <ClInclude Include="..\Public\UI_Effect_MagicCircle.h" />
+    <ClInclude Include="..\Public\UI_Effect_Twinkl.h" />
+    <ClInclude Include="..\Public\UI_Elements.h" />
+    <ClInclude Include="..\Public\UI_Enums.h" />
+    <ClInclude Include="..\Public\UI_EvolveLeftBG.h" />
+    <ClInclude Include="..\Public\UI_EvolveMenu.h" />
+    <ClInclude Include="..\Public\UI_EvolveMenu_Level.h" />
+    <ClInclude Include="..\Public\UI_EvolveMenu_Level_BG.h" />
+    <ClInclude Include="..\Public\UI_EvolveMenu_Option.h" />
+    <ClInclude Include="..\Public\UI_EvolveMenu_PlagueWeapon.h" />
+    <ClInclude Include="..\Public\UI_EvolveMenu_PlagueWeapon_PlayerSkillSlot.h" />
+    <ClInclude Include="..\Public\UI_EvolveMenu_PlagueWeapon_SkillButton.h" />
+    <ClInclude Include="..\Public\UI_EvolveMenu_PlagueWeapon_SkillButtonSlot.h" />
+    <ClInclude Include="..\Public\UI_EvolveMenu_PlagueWeapon_SkillInformation.h" />
+    <ClInclude Include="..\Public\UI_EvolveMenu_PlagueWeapon_SkillView.h" />
+    <ClInclude Include="..\Public\UI_EvolveMenu_SelectDecoration.h" />
+    <ClInclude Include="..\Public\UI_EvolveMenu_SKillIcon.h" />
+    <ClInclude Include="..\Public\UI_EvolveMenu_Talent.h" />
+    <ClInclude Include="..\Public\UI_EvolveMenu_Page.h" />
+    <ClInclude Include="..\Public\UI_EvolveTalent_Active.h" />
+    <ClInclude Include="..\Public\UI_FadeMask.h" />
+    <ClInclude Include="..\Public\UI_Interaction.h" />
+    <ClInclude Include="..\Public\UI_Inventory.h" />
+    <ClInclude Include="..\Public\UI_InventoryConfirmWindow.h" />
+    <ClInclude Include="..\Public\UI_InventoryConfirmWindowButton.h" />
+    <ClInclude Include="..\Public\UI_ItemInformation.h" />
+    <ClInclude Include="..\Public\UI_ItemPopup.h" />
+    <ClInclude Include="..\Public\UI_ItemRequirement.h" />
+    <ClInclude Include="..\Public\UI_ItemSlot.h" />
+    <ClInclude Include="..\Public\UI_LerpBar.h" />
+    <ClInclude Include="..\Public\UI_MenuText.h" />
+    <ClInclude Include="..\Public\UI_MonsterFocus.h" />
+    <ClInclude Include="..\Public\UI_OptionElementBase.h" />
+    <ClInclude Include="..\Public\UI_OptionElement_OnOff.h" />
+    <ClInclude Include="..\Public\UI_OptionElement_Quality.h" />
+    <ClInclude Include="..\Public\UI_OptionElement_Slider.h" />
+    <ClInclude Include="..\Public\UI_OptionItem.h" />
+    <ClInclude Include="..\Public\UI_PauseMenu_Page_Inventory.h" />
+    <ClInclude Include="..\Public\UI_RadialBlurMask.h" />
+    <ClInclude Include="..\Public\UI_Script.h" />
+    <ClInclude Include="..\Public\UI_ScriptQueue.h" />
+    <ClInclude Include="..\Public\UI_Scroll.h" />
+    <ClInclude Include="..\Public\UI_ShuffleIcon.h" />
+    <ClInclude Include="..\Public\UI_Slider.h" />
+    <ClInclude Include="..\Public\UI_T_Dissolve.h" />
+    <ClInclude Include="..\Public\UI_UnlockEventUI.h" />
+    <ClInclude Include="..\Public\UI_Utils.h" />
+    <ClInclude Include="..\Public\UrdWeapon.h" />
+    <ClInclude Include="..\Public\VargBossStateBase.h" />
+    <ClInclude Include="..\Public\BossVarg\Varg.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Attack1a.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Attack1b.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Attack2a.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Attack2b.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Attack3a.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Attack3b.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_AvoidAttack.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_AvoidB.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_AvoidL.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_AvoidR.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Exe_Dead.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Exe_End.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Exe_NoDeadEnd.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Exe_SitLoop.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Exe_Start.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Hurt.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Idle.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Parry.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Roar_Getup.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Run.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_RunAttack.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_RunStart.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_SPA_Catch.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_SPA_CatchFail.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_SPA_Roar.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_SPA_Run.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Start.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Stun_End.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Stun_Loop.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_Stun_Start.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_TurnL.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_TurnR.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_WalkB.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_WalkF.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_WalkL.h" />
+    <ClInclude Include="..\Public\BossVarg\VargBossState_WalkR.h" />
+    <ClInclude Include="..\Public\Camera_Free.h" />
+    <ClInclude Include="..\Public\Camera_Static.h" />
+    <ClInclude Include="..\Public\Camera_Target.h" />
+    <ClInclude Include="..\Public\Corvus.h" />
+    <ClInclude Include="..\Public\Character.h" />
+    <ClInclude Include="..\Public\ClientComponent.h" />
+    <ClInclude Include="..\Public\ClientLevel.h" />
+    <ClInclude Include="..\Public\Client_Components.h" />
+    <ClInclude Include="..\Public\Client_GameObjects.h" />
+    <ClInclude Include="..\Public\Client_Presets.h" />
+    <ClInclude Include="..\Public\Client_Structs.h" />
+    <ClInclude Include="..\Public\Client_Windows.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusStateBase.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusStates.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_AVoid.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_BasicHealing.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Idle.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Jogging.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_JoggingStartEnd.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_JoggingStart.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_LAttack1.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_LAttack2.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_LAttack3.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Run.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_Sprint.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_SprintAttack.h" />
+    <ClInclude Include="..\Public\CorvusStates\CorvusState_SprintStart.h" />
+    <ClInclude Include="..\Public\CorvusStates\StateExecution\Varg_Execution.h" />
+    <ClInclude Include="..\Public\Corvus_DefaultDagger.h" />
+    <ClInclude Include="..\Public\Corvus_DefaultSaber.h" />
+    <ClInclude Include="..\Public\CustomEffectMesh.h" />
+    <ClInclude Include="..\Public\DissolveUI.h" />
+    <ClInclude Include="..\Public\Dynamic_Prop.h" />
+    <ClInclude Include="..\Public\CustomUI.h" />
+    <ClInclude Include="..\Public\EditGround.h" />
+    <ClInclude Include="..\Public\EditGroupProp.h" />
+    <ClInclude Include="..\Public\EditInstanceProp.h" />
+    <ClInclude Include="..\Public\EditNaviMesh.h" />
+    <ClInclude Include="..\Public\EffectMesh.h" />
+    <ClInclude Include="..\Public\EffectGroup.h" />
+    <ClInclude Include="..\Public\EffectObject.h" />
+    <ClInclude Include="..\Public\Effect_Point.h" />
+    <ClInclude Include="..\Public\Effect_Rect.h" />
+    <ClInclude Include="..\Public\MonsterHPBar_Base.h" />
+    <ClInclude Include="..\Public\FadeMask.h" />
+    <ClInclude Include="..\Public\GameManager.h" />
+    <ClInclude Include="..\Public\Ground.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Public\HUD_Hover.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Public\HUD_PlagueWeapon.h" />
+    <ClInclude Include="..\Public\HUD_PlagueWeaponBase.h" />
+    <ClInclude Include="..\Public\HUD_PlagueWeapon_Main.h" />
+    <ClInclude Include="..\Public\HUD_PlagueWeapon_Steal.h" />
+    <ClInclude Include="..\Public\HUD_PlagueWeapon_Steal_Icon.h" />
+    <ClInclude Include="..\Public\ImGui_Window.h" />
+    <ClInclude Include="..\Public\Client_Defines.h" />
+    <ClInclude Include="..\Public\Interaction_Prop.h" />
+    <ClInclude Include="..\Public\Level_Lobby.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Public\Level_Stage3.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Public\Light_Prop.h" />
+    <ClInclude Include="..\Public\LoadingTextUI.h" />
+    <ClInclude Include="..\Public\MonsterHPBar_Boss.h" />
+    <ClInclude Include="..\Public\MonsterHPBar_Elite.h" />
+    <ClInclude Include="..\Public\NorMonStates.h" />
+    <ClInclude Include="..\Public\Monster.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_SitToIdle.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_Stop.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_Walk_FR.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_Walk_L.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_LightAttack2.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_Awake.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_Die.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_GroggyEnd.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_GroggyLoop.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_GroggyStart.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_HeavyAttack1.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_HeavyAttack2.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_HeavyAttack3.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_HurtL.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_HurtR.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_Idle.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_LightAttack1.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_LightAttack3.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_Run.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_SpecialAttackStart.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_TakeExecution.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_TurnL90.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_TurnR90.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_Walk_B.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_Walk_BL.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_Walk_BR.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_Walk_F.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_Walk_FL.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonState_Walk_R.h" />
+    <ClInclude Include="..\Public\NorMonState\NorMonsterStateBase.h" />
+    <ClInclude Include="..\Public\NorMonster.h" />
+    <ClInclude Include="..\Public\PlayerStateBase.h" />
+    <ClInclude Include="..\Public\Player_FeatherUI.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Public\Player_HPBar.h" />
+    <ClInclude Include="..\Public\HUD_Player_Memory.h" />
+    <ClInclude Include="..\Public\Player_MPBar.h" />
+    <ClInclude Include="..\Public\Player_PotionUI.h" />
+    <ClInclude Include="..\Public\ProgressBar.h" />
+    <ClInclude Include="..\Public\Preset_PhysXColliderDesc.h" />
+    <ClInclude Include="..\Public\PreviewAnimationModel.h" />
+    <ClInclude Include="..\Public\PreView_Prop.h" />
+    <ClInclude Include="..\Public\Prop.h" />
+    <ClInclude Include="..\Public\SkyBox.h" />
+    <ClInclude Include="..\Public\StateBase.h" />
+    <ClInclude Include="..\Public\Static_Instancing_Prop.h" />
+    <ClInclude Include="..\Public\Static_Prop.h" />
+    <ClInclude Include="..\Public\Status.h" />
+    <ClInclude Include="..\Public\Trigger.h" />
+    <ClInclude Include="..\Public\UI_Landing.h" />
+    <ClInclude Include="..\Public\UI_Loading.h" />
+    <ClInclude Include="..\Public\UI_Logo.h" />
+    <ClInclude Include="..\Public\UI_PauseMenu.h" />
+    <ClInclude Include="..\Public\UI_PauseMenu_Page_Status.h" />
+    <ClInclude Include="..\Public\UI_PauseMenu_Tap_PlagueWeapon.h" />
+    <ClInclude Include="..\Public\UI_PauseMenu_Tap_Potion.h" />
+    <ClInclude Include="..\Public\UI_PauseMenu_Tap_Status.h" />
+    <ClInclude Include="..\Public\VargStates.h" />
+    <ClInclude Include="..\Public\UI_PlagueWeapon.h" />
+    <ClInclude Include="..\Public\VargWeapon.h" />
+    <ClInclude Include="..\Public\Water.h" />
+    <ClInclude Include="..\Public\Weapon.h" />
+    <ClInclude Include="..\Public\Window_AnimationModelView.h" />
+    <ClInclude Include="..\Public\Window_AnimationPlayerView.h" />
+    <ClInclude Include="..\Public\Window_ComponentView.h" />
+    <ClInclude Include="..\Public\Window_EffectEditerView.h" />
+    <ClInclude Include="..\Public\Window_EffectHierarchyView.h" />
+    <ClInclude Include="..\Public\Window_EffectResourceView.h" />
+    <ClInclude Include="..\Public\Window_GameSystem_Dev.h" />
+    <ClInclude Include="..\Public\Window_HierarchyView.h" />
+    <ClInclude Include="..\Public\Window_Level_Dev.h" />
+    <ClInclude Include="..\Public\Window_ModelContantView.h" />
+    <ClInclude Include="..\Public\Window_Optimization_Dev.h" />
+    <ClInclude Include="..\Public\Window_Player_Dev.h" />
+    <ClInclude Include="..\Public\Window_PrototypeView.h" />
+    <ClInclude Include="..\Public\Window_RenderTarget_Dev.h" />
+    <ClInclude Include="..\Public\Window_Shader_Dev.h" />
+    <ClInclude Include="..\Public\Window_TextureEditerView.h" />
+    <ClInclude Include="..\Public\Window_UI.h" />
+    <ClInclude Include="..\Public\ImGui_Manager.h" />
+    <ClInclude Include="..\Public\Level_Edit.h" />
+    <ClInclude Include="..\Public\Level_GamePlay.h" />
+    <ClInclude Include="..\Public\Level_Loading.h" />
+    <ClInclude Include="..\Public\Level_Logo.h" />
+    <ClInclude Include="..\Public\Loader.h" />
+    <ClInclude Include="..\Public\MainApp.h" />
+    <ClInclude Include="..\Public\Player.h" />
+    <ClInclude Include="..\Public\Terrain.h" />
+    <ClInclude Include="..\Public\UI.h" />
+    <ClInclude Include="..\Public\WorldUI.h" />
+    <ClInclude Include="Client.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="UI_Elements.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Private\Actor.cpp" />
+    <ClCompile Include="..\Private\ActorDecor.cpp" />
+    <ClCompile Include="..\Private\AIStateBase.cpp" />
+    <ClCompile Include="..\Private\Attack_Area.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_AttackComboB1.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_AttackComboB2.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_AttackComboB3.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_AttackComboC1.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_AttackComboC2.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Attacks.cpp" />
+    <ClCompile Include="..\Private\CNvClothCollider.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_PS.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_PS_BatRoar_Upgrade.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_PS_BigHand.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_PS_BigHand_End.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_PS_Halberds.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_PS_Halberds_Upgrade.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\VargExecution\CorvusState_Armor_Execution_01.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\VargExecution\CorvusState_Armor_Execution_02.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\VargExecution\CorvusState_AromorLV1_Execution.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\VargExecution\CorvusState_AromorLV1_NCamera_Execution.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\VargExecution\CorvusState_BigHandman_Execution.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_PS_BatRoar.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_PS_CaneSword_Start.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\VargExecution\CorvusState_LV1M_Execution.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\VargExecution\CorvusState_LV2M_Execution.cpp" />
+    <ClCompile Include="..\Private\Effect_AttackArea.cpp" />
+    <ClCompile Include="..\Private\Ballon.cpp" />
+    <ClCompile Include="..\Private\BossBat\Bat.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossStateBase.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Atk_L01_1.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Atk_L01_2a.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Atk_L01_2b.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Atk_L01_3a.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Atk_R01_1.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Atk_R01_2a.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Atk_R01_2b.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_AttackIdle.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_BackJump.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Bite_1.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Bite_2.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Car.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Charge.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_ChargeIdle.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_FTurnL.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_FTurnR.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_HellIdle.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Hellscream.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_HurtXL_F.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_HurtXL_L.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Idle.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_IdleStates.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_JumpSmash_Chest.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_JumpSmash_Forward.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_JumpSmash_SmarhL.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_SonicBoom.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_SonicBullet.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Sp.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Start.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Start_Loop.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Storm.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Stun_End.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Stun_Loop.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_Stun_Start.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_TakeExecution_End.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_TakeExecution_Loop.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_TakeExecution_Start.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_TurnL.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_TurnR.cpp" />
+    <ClCompile Include="..\Private\BossBat\BatBossState_WalkF.cpp" />
+    <ClCompile Include="..\Private\BossStateBase.cpp" />
+    <ClCompile Include="..\Private\BossUrd\Urd.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossStateBase.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Attack01.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Attack01LV2.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Attack02.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Attack02LV2C0.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Attack02LV2C1.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Attack03_DashSting_L.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Attack03_DashSting_R.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Attack05.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Attack06.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Attack07.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Attack_Idle.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Dead.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Equip_L.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Equip_R.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_FightStart.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_HurtCounter.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_HurtM_FL.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_HurtM_FR.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_HurtS_FL.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_HurtS_FR.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Idle.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_IdleStates.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Parry_L.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Parry_R.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Parry_RQuick.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Run.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Skill01.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Skill02_1.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Skill03_L.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Skill03_R.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Skill_Idle.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_SPSkill01.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Start.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_StepB.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_StepFL.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_StepFL45.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_StepFR.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_StepFR45.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_StepL.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_StepR.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Step_Idle.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_StunEnd.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_StunLoop.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_StunStart.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_TurnL.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_TurnR.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_VS_TakeExecution.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_WalkB.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_WalkBL.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_WalkBR.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_WalkF.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_WalkFL.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_WalkFR.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_WalkL.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_WalkR.cpp" />
+    <ClCompile Include="..\Private\BossUrd\UrdBossState_Walk_Idle.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Attack2b1.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Attack2b2.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_IdleGeneral.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_RaidAttack.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_TurnAttack.cpp" />
+    <ClCompile Include="..\Private\ClientComponent_Utils.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_AVoidB.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_AVoidF.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_AVoidL.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_AVoidR.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_AvoidSlash.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_AVoidThrust.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_CheckPointEnd.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_CheckPointLoop.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_CheckPointStart.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_ClawAttackHoldLoop.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_ClawPlunderAttack.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Climb_Fall_Attack.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Climb_L_Down.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Climb_L_Down_End.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Climb_L_Idle.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Climb_L_UP.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Climb_L_Up_Down_End.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Climb_L_UP_End.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Climb_R_Down.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Climb_R_Down_End.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Climb_R_Idle.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Climb_R_UP.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Climb_R_Up_Down_End.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Climb_R_UP_End.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Climb_Start.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Fall_End.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Fall_Loop.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Fall_Start.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_FeatherAttack.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Getup.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Headache_End.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Headache_Loop.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Headache_Start.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_HurtBlown.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_HurtFallDown.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_HurtFallDownEnd.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_HurtXL.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_KnockBack.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_LongHealing.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Long_AvoidB.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Long_AvoidF.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Long_AvoidL.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Long_AvoidR.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_ParryDeflectLeft.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_ParryDeflectLeftup.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_ParryDeflectRight.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_ParryDeflectRightup.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_ClawAttackAway.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_ClawAttackHold.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_ClawAttackTab2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_PS_Axe.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_PS_CaneSword.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_PS_Hammer.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_PS_Hammer_Upgrade.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_PS_Knife.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_PS_Magician.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_PS_Scythe.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_PS_Scythe_Upgrade.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_PS_UrdSword.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_PS_VargSword.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_PS_VargSwordStart.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_RunB.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_RunBL.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_RunBR.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_RunFL.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_RunFR.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_RunL.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_RunR.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_ShortAvoid.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_ShortHealing.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Short_AvoidB.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Short_AvoidF.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Short_AvoidL.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Short_AvoidR.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Short_Claw_Atk1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Short_Claw_Atk2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Short_Claw_Atk3.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Abundant_FeadtherLV1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Abundant_FeadtherLV2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Abundant_FeadtherLV3.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_AvoidLv1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_AvoidSlashLV1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_AvoidSlashLV2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_AvoidThrustLV2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_EnergisedWeaponLV1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_EnergisedWeaponLV2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Execution.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Feadther_FlyingLV1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Feadther_FlyingLV2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Feadther_FlyingLV3.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Feadther_FlyingLV4.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Growing_FeadtherLV1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Growing_FeadtherLV2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Growing_FeadtherLV3.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_HealingExecutionLV1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_HealingExecutionLV2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_JumpAttackLV1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_JumpAttackLV2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_JumpAttackLV3.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Long_AvoidLv1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Long_AvoidLv2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Long_ClawLv1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Long_ClawLv2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Long_ClawLv3.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_NorSwordLV1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_NorSwordLV2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_AvoidThrustLV1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_ParringLv1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_ParringLv2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_PredatorLv1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_PredatorLv2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Reckless_ParringLv1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Reckless_ParringLv2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_SharpWeaponLV1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_SharpWeaponLV2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Short_AvoidLv1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Short_AvoidLv2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Short_ClawLv1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Effect_Short_ClawLv2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\Talent_Sword.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\VargExecution\CorvusState_Bat_Execution.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\VargExecution\CorvusState_Execution_R_R.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\VargExecution\CorvusState_Execution_Start.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\VargExecution\CorvusState_Joker_Execution.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\VargExecution\CorvusState_RaidAttack1Hurt.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\VargExecution\CorvusState_Urd_Execution.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\VargExecution\CorvusState_Varg_Execution.cpp" />
+    <ClCompile Include="..\Private\DeveloperConsole_Manager.cpp" />
+    <ClCompile Include="..\Private\Dynamic_Piece.cpp" />
+    <ClCompile Include="..\Private\EasingComponent.cpp" />
+    <ClCompile Include="..\Private\EasingComponent_Alpha.cpp" />
+    <ClCompile Include="..\Private\EasingComponent_Bezier.cpp" />
+    <ClCompile Include="..\Private\EasingComponent_Float.cpp" />
+    <ClCompile Include="..\Private\EasingComponent_Transform.cpp" />
+    <ClCompile Include="..\Private\EditEventContoller.cpp" />
+    <ClCompile Include="..\Private\EditMapCollider.cpp" />
+    <ClCompile Include="..\Private\EditSetActor.cpp" />
+    <ClCompile Include="..\Private\Effect_Decal.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandMan.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandManStateBase.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandManState_ComboA01.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandManState_ComboA02.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandManState_ComboB_End.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandManState_ComboB_Loop.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandManState_ComboB_Start.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandManState_HurtCounter.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandManState_HurtL.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandManState_HurtR.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandManState_Idle.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandManState_SP_Idle1.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandManState_SP_Idle1_End.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandManState_Stun_End.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandManState_Stun_Loop.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandManState_Stun_Start.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandManState_TurnL90.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandManState_TurnR90.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandManState_VS_TakeExecution_01.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\BigHandMan\BigHandManState_Walk.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\EliteStateBase.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\Joker.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_ComboA1.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_ComboA2.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_ComboB1.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_ComboB2.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_Dead.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_Execution_End.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_Execution_Loop.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_Execution_Start.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_Idle.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_JumpAttack.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_RunAtkEnd.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_RunAtkLoop.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_RunAtkStart.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_ShockAttack.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_Sp_Open.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_StrongAttack.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_Stun_End.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_Stun_Loop.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_Stun_Start.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_TurnAtkL.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_TurnAtkR.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_TurnL90.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_TurnR90.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_WalkB.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_WalkF.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_WalkL.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_WalkR.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_WheelAtkEnd.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_WheelAtkEnd2.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_WheelAtkLoop.cpp" />
+    <ClCompile Include="..\Private\EliteMonState\Joker\JokerState_WheelAtkStart.cpp" />
+    <ClCompile Include="..\Private\EliteMonster.cpp" />
+    <ClCompile Include="..\Private\Fog.cpp" />
+    <ClCompile Include="..\Private\Interaction_Aisemy.cpp" />
+    <ClCompile Include="..\Private\Interaction_CastleGate.cpp" />
+    <ClCompile Include="..\Private\Interaction_Chair.cpp" />
+    <ClCompile Include="..\Private\Interaction_CheckPoint.cpp" />
+    <ClCompile Include="..\Private\Interaction_DeadSpot.cpp" />
+    <ClCompile Include="..\Private\Interaction_Door.cpp" />
+    <ClCompile Include="..\Private\Interaction_Dynamic_Prop.cpp" />
+    <ClCompile Include="..\Private\Interaction_Elevator.cpp" />
+    <ClCompile Include="..\Private\Camera_Interior.cpp" />
+    <ClCompile Include="..\Private\Interaction_InteriorActivate.cpp" />
+    <ClCompile Include="..\Private\Interaction_MapTable.cpp" />
+    <ClCompile Include="..\Private\InteriorProp.cpp" />
+    <ClCompile Include="..\Private\JavelinWeapon.cpp" />
+    <ClCompile Include="..\Private\Level_Home.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_HeavyAttack4.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_HeavyAttack5.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_Idle2Fight.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_Petrol.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_SpecialAttackEnd.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_SpecialAttackLoop.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_Suprise_Attack.cpp" />
+    <ClCompile Include="..\Private\PhysXColliderObject_Interior.cpp" />
+    <ClCompile Include="..\Private\Preset_NvClothCollider.cpp" />
+    <ClCompile Include="..\Private\Preset_ShaderPass.cpp" />
+    <ClCompile Include="..\Private\PreView_InteriorProp.cpp" />
+    <ClCompile Include="..\Private\Prop_Fence.cpp" />
+    <ClCompile Include="..\Private\Interaction_Item.cpp" />
+    <ClCompile Include="..\Private\Interaction_Ladder.cpp" />
+    <ClCompile Include="..\Private\Interaction_NextPoint.cpp" />
+    <ClCompile Include="..\Private\Interaction_Note.cpp" />
+    <ClCompile Include="..\Private\Inventory.cpp" />
+    <ClCompile Include="..\Private\InventorySorter.cpp" />
+    <ClCompile Include="..\Private\Item.cpp" />
+    <ClCompile Include="..\Private\ItemPopup_Queue.cpp" />
+    <ClCompile Include="..\Private\JokerStateBase.cpp" />
+    <ClCompile Include="..\Private\JokerWeapon.cpp" />
+    <ClCompile Include="..\Private\Level_Stage2.cpp" />
+    <ClCompile Include="..\Private\Level_Test.cpp" />
+    <ClCompile Include="..\Private\MonsterParryingBar.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_Parry.cpp" />
+    <ClCompile Include="..\Private\PhysXCameraController.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Private\PhysXCharacterController.cpp" />
+    <ClCompile Include="..\Private\PlayerSkill_System.cpp" />
+    <ClCompile Include="..\Private\Player_HPBar_Default.cpp" />
+    <ClCompile Include="..\Private\Player_ItemSkillCollection.cpp" />
+    <ClCompile Include="..\Private\Preset_DynamicProp.cpp" />
+    <ClCompile Include="..\Private\Preset_AddGameObject.cpp" />
+    <ClCompile Include="..\Private\Preset_ItemData.cpp" />
+    <ClCompile Include="..\Private\Preset_NvClothMesh.cpp" />
+    <ClCompile Include="..\Private\Preset_UIDesc.cpp" />
+    <ClCompile Include="..\Private\Requirement_PlayerStatusMana.cpp" />
+    <ClCompile Include="..\Private\Requirement_Time.cpp" />
+    <ClCompile Include="..\Private\Section_Eventer.cpp" />
+    <ClCompile Include="..\Private\RequirementBase.cpp" />
+    <ClCompile Include="..\Private\RequirementChecker.cpp" />
+    <ClCompile Include="..\Private\Requirement_Once.cpp" />
+    <ClCompile Include="..\Private\Requirement_State.cpp" />
+    <ClCompile Include="..\Private\Skill_Axe.cpp" />
+    <ClCompile Include="..\Private\Skill_Bankai.cpp" />
+    <ClCompile Include="..\Private\Skill_Base.cpp" />
+    <ClCompile Include="..\Private\Skill_BigHand.cpp" />
+    <ClCompile Include="..\Private\Skill_BloodStorm.cpp" />
+    <ClCompile Include="..\Private\Skill_Hammer.cpp" />
+    <ClCompile Include="..\Private\Skill_Halberds.cpp" />
+    <ClCompile Include="..\Private\Skill_Knife.cpp" />
+    <ClCompile Include="..\Private\Skill_Scythe.cpp" />
+    <ClCompile Include="..\Private\Skill_VargSword.cpp" />
+    <ClCompile Include="..\Private\Static_InteriorProp.cpp" />
+    <ClCompile Include="..\Private\Status_Boss.cpp" />
+    <ClCompile Include="..\Private\StolenSkill.cpp" />
+    <ClCompile Include="..\Private\TargetCurve.cpp" />
+    <ClCompile Include="..\Private\TransformUtils.cpp" />
+    <ClCompile Include="..\Private\UIManager.cpp" />
+    <ClCompile Include="..\Private\UI_AppearEventVarg.cpp" />
+    <ClCompile Include="..\Private\UI_BloodOverlay.cpp" />
+    <ClCompile Include="..\Private\UI_Button.cpp" />
+    <ClCompile Include="..\Private\UI_Container.cpp" />
+    <ClCompile Include="..\Private\UI_Cursor.cpp" />
+    <ClCompile Include="..\Private\UI_CustomEffect.cpp" />
+    <ClCompile Include="..\Private\UI_DamageFont.cpp" />
+    <ClCompile Include="..\Private\UI_DamageFontPiece.cpp" />
+    <ClCompile Include="..\Private\UI_EffectBase.cpp" />
+    <ClCompile Include="..\Private\UI_EffectGroup_SkillOpen.cpp" />
+    <ClCompile Include="..\Private\UI_Effect_FadeBackground.cpp" />
+    <ClCompile Include="..\Private\UI_Effect_MagicCircle.cpp" />
+    <ClCompile Include="..\Private\UI_Effect_Twinkl.cpp" />
+    <ClCompile Include="..\Private\UI_EvolveLeftBG.cpp" />
+    <ClCompile Include="..\Private\UI_EvolveMenu.cpp" />
+    <ClCompile Include="..\Private\UI_EvolveMenu_Level.cpp" />
+    <ClCompile Include="..\Private\UI_EvolveMenu_Level_BG.cpp" />
+    <ClCompile Include="..\Private\UI_EvolveMenu_Option.cpp" />
+    <ClCompile Include="..\Private\UI_EvolveMenu_PlagueWeapon.cpp" />
+    <ClCompile Include="..\Private\UI_EvolveMenu_PlagueWeapon_PlayerSkillSlot.cpp" />
+    <ClCompile Include="..\Private\UI_EvolveMenu_PlagueWeapon_SkillButton.cpp" />
+    <ClCompile Include="..\Private\UI_EvolveMenu_PlagueWeapon_SkillButtonSlot.cpp" />
+    <ClCompile Include="..\Private\UI_EvolveMenu_PlagueWeapon_SkillInformation.cpp" />
+    <ClCompile Include="..\Private\UI_EvolveMenu_PlagueWeapon_SkillView.cpp" />
+    <ClCompile Include="..\Private\UI_EvolveMenu_SelectDecoration.cpp" />
+    <ClCompile Include="..\Private\UI_EvolveMenu_SKillIcon.cpp" />
+    <ClCompile Include="..\Private\UI_EvolveMenu_Talent.cpp" />
+    <ClCompile Include="..\Private\UI_EvolveMenu_Page.cpp" />
+    <ClCompile Include="..\Private\UI_EvolveTalent_Active.cpp" />
+    <ClCompile Include="..\Private\UI_FadeMask.cpp" />
+    <ClCompile Include="..\Private\UI_Interaction.cpp" />
+    <ClCompile Include="..\Private\UI_Inventory.cpp" />
+    <ClCompile Include="..\Private\UI_InventoryConfirmWindow.cpp" />
+    <ClCompile Include="..\Private\UI_InventoryConfirmWindowButton.cpp" />
+    <ClCompile Include="..\Private\UI_ItemInformation.cpp" />
+    <ClCompile Include="..\Private\UI_ItemPopup.cpp" />
+    <ClCompile Include="..\Private\UI_ItemRequirement.cpp" />
+    <ClCompile Include="..\Private\UI_ItemSlot.cpp" />
+    <ClCompile Include="..\Private\UI_LerpBar.cpp" />
+    <ClCompile Include="..\Private\BossMonster.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_ClawAttackTab.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Die.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_HurtL.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_HurtR.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_HurtXXL.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_LAttack4.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_LAttack5.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\VargExecution\CorvusState_NorMob_Execution.cpp" />
+    <ClCompile Include="..\Private\Effect_Trail.cpp" />
+    <ClCompile Include="..\Private\Effect_Trail_Distortion.cpp" />
+    <ClCompile Include="..\Private\Effect_Trail_EyeLight.cpp" />
+    <ClCompile Include="..\Private\MobWeapon.cpp" />
+    <ClCompile Include="..\Private\Status_Monster.cpp" />
+    <ClCompile Include="..\Private\Status_Player.cpp" />
+    <ClCompile Include="..\Private\Preset_PhysXControllerDesc.cpp" />
+    <ClCompile Include="..\Private\PhysXColliderObject.cpp" />
+    <ClCompile Include="..\Private\UI_MenuText.cpp" />
+    <ClCompile Include="..\Private\UI_MonsterFocus.cpp" />
+    <ClCompile Include="..\Private\UI_OptionElementBase.cpp" />
+    <ClCompile Include="..\Private\UI_OptionElement_OnOff.cpp" />
+    <ClCompile Include="..\Private\UI_OptionElement_Quality.cpp" />
+    <ClCompile Include="..\Private\UI_OptionElement_Slider.cpp" />
+    <ClCompile Include="..\Private\UI_OptionItem.cpp" />
+    <ClCompile Include="..\Private\UI_PauseMenu_Page_Inventory.cpp" />
+    <ClCompile Include="..\Private\UI_RadialBlurMask.cpp" />
+    <ClCompile Include="..\Private\UI_Script.cpp" />
+    <ClCompile Include="..\Private\UI_ScriptQueue.cpp" />
+    <ClCompile Include="..\Private\UI_Scroll.cpp" />
+    <ClCompile Include="..\Private\UI_ShuffleIcon.cpp" />
+    <ClCompile Include="..\Private\UI_Slider.cpp" />
+    <ClCompile Include="..\Private\UI_T_Dissolve.cpp" />
+    <ClCompile Include="..\Private\UI_UnlockEventUI.cpp" />
+    <ClCompile Include="..\Private\UI_Utils.cpp" />
+    <ClCompile Include="..\Private\UrdWeapon.cpp" />
+    <ClCompile Include="..\Private\VargBossStateBase.cpp" />
+    <ClCompile Include="..\Private\BossVarg\Varg.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Attack1a.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Attack1b.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Attack2a.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Attack2b.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Attack3a.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Attack3b.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_AvoidAttack.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_AvoidB.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_AvoidL.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_AvoidR.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Exe_Dead.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Exe_End.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Exe_NoDeadEnd.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Exe_SitLoop.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Exe_Start.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Hurt.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Idle.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Parry.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Roar_Getup.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Run.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_RunAttack.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_RunStart.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_SPA_Catch.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_SPA_CatchFail.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_SPA_Roar.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_SPA_Run.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Start.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Stun_End.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Stun_Loop.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_Stun_Start.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_TurnL.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_TurnR.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_WalkB.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_WalkF.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_WalkL.cpp" />
+    <ClCompile Include="..\Private\BossVarg\VargBossState_WalkR.cpp" />
+    <ClCompile Include="..\Private\Camera_Free.cpp" />
+    <ClCompile Include="..\Private\Camera_Static.cpp" />
+    <ClCompile Include="..\Private\Camera_Target.cpp" />
+    <ClCompile Include="..\Private\Corvus.cpp" />
+    <ClCompile Include="..\Private\Character.cpp" />
+    <ClCompile Include="..\Private\ClientComponent.cpp" />
+    <ClCompile Include="..\Private\ClientLevel.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusStateBase.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_AVoid.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_BasicHealing.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Idle.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Jogging.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_JoggingStartEnd.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_JoggingStart.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_LAttack1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_LAttack2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_LAttack3.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Parry1.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Parry2.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Run.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_Sprint.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_SprintAttack.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\CorvusState_SprintStart.cpp" />
+    <ClCompile Include="..\Private\CorvusStates\VargExecution\Varg_Execution.cpp" />
+    <ClCompile Include="..\Private\Corvus_DefaultDagger.cpp" />
+    <ClCompile Include="..\Private\Corvus_DefaultSaber.cpp" />
+    <ClCompile Include="..\Private\CustomEffectMesh.cpp" />
+    <ClCompile Include="..\Private\DissolveUI.cpp" />
+    <ClCompile Include="..\Private\Dynamic_Prop.cpp" />
+    <ClCompile Include="..\Private\CustomUI.cpp" />
+    <ClCompile Include="..\Private\EditGround.cpp" />
+    <ClCompile Include="..\Private\EditGroupProp.cpp" />
+    <ClCompile Include="..\Private\EditInstanceProp.cpp" />
+    <ClCompile Include="..\Private\EditNaviMesh.cpp" />
+    <ClCompile Include="..\Private\EffectMesh.cpp" />
+    <ClCompile Include="..\Private\EffectGroup.cpp" />
+    <ClCompile Include="..\Private\EffectObject.cpp" />
+    <ClCompile Include="..\Private\Effect_Point.cpp" />
+    <ClCompile Include="..\Private\Effect_Rect.cpp" />
+    <ClCompile Include="..\Private\MonsterHPBar_Base.cpp" />
+    <ClCompile Include="..\Private\FadeMask.cpp" />
+    <ClCompile Include="..\Private\GameManager.cpp" />
+    <ClCompile Include="..\Private\Ground.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Private\HUD_Hover.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Private\HUD_PlagueWeapon.cpp" />
+    <ClCompile Include="..\Private\HUD_PlagueWeaponBase.cpp" />
+    <ClCompile Include="..\Private\HUD_PlagueWeapon_Main.cpp" />
+    <ClCompile Include="..\Private\HUD_PlagueWeapon_Steal.cpp" />
+    <ClCompile Include="..\Private\HUD_PlagueWeapon_Steal_Icon.cpp" />
+    <ClCompile Include="..\Private\ImGui_Window.cpp" />
+    <ClCompile Include="..\Private\Interaction_Prop.cpp" />
+    <ClCompile Include="..\Private\Level_Lobby.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Private\Level_Stage3.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Private\Light_Prop.cpp" />
+    <ClCompile Include="..\Private\LoadingTextUI.cpp" />
+    <ClCompile Include="..\Private\Monster.cpp" />
+    <ClCompile Include="..\Private\MonsterHPBar_Boss.cpp" />
+    <ClCompile Include="..\Private\MonsterHPBar_Elite.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_SitToIdle.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_Stop.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_Walk_FR.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_Walk_L.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_LightAttack2.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_Awake.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_Die.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_GroggyEnd.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_GroggyLoop.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_GroggyStart.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_HeavyAttack1.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_HeavyAttack2.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_HeavyAttack3.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_HurtL.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_HurtR.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_Idle.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_LightAttack1.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_LightAttack3.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_Run.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_SpecialAttackStart.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_TakeExecution.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_TurnL90.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_TurnR90.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_Walk_B.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_Walk_BL.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_Walk_BR.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_Walk_F.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_Walk_FL.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonState_Walk_R.cpp" />
+    <ClCompile Include="..\Private\NorMonState\NorMonsterStateBase.cpp" />
+    <ClCompile Include="..\Private\NorMonster.cpp" />
+    <ClCompile Include="..\Private\PlayerStateBase.cpp" />
+    <ClCompile Include="..\Private\Player_FeatherUI.cpp" />
+    <ClCompile Include="..\Private\Player_HPBar.cpp" />
+    <ClCompile Include="..\Private\HUD_Player_Memory.cpp" />
+    <ClCompile Include="..\Private\Player_MPBar.cpp" />
+    <ClCompile Include="..\Private\Player_PotionUI.cpp" />
+    <ClCompile Include="..\Private\ProgressBar.cpp" />
+    <ClCompile Include="..\Private\Preset_PhysXColliderDesc.cpp" />
+    <ClCompile Include="..\Private\PreviewAnimationModel.cpp" />
+    <ClCompile Include="..\Private\PreView_Prop.cpp" />
+    <ClCompile Include="..\Private\Prop.cpp" />
+    <ClCompile Include="..\Private\SkyBox.cpp" />
+    <ClCompile Include="..\Private\StateBase.cpp" />
+    <ClCompile Include="..\Private\Static_Instancing_Prop.cpp" />
+    <ClCompile Include="..\Private\Static_Prop.cpp" />
+    <ClCompile Include="..\Private\Status.cpp" />
+    <ClCompile Include="..\Private\Trigger.cpp" />
+    <ClCompile Include="..\Private\UI_Landing.cpp" />
+    <ClCompile Include="..\Private\UI_Loading.cpp" />
+    <ClCompile Include="..\Private\UI_Logo.cpp" />
+    <ClCompile Include="..\Private\UI_PauseMenu.cpp" />
+    <ClCompile Include="..\Private\UI_PauseMenu_Page_Status.cpp" />
+    <ClCompile Include="..\Private\UI_PauseMenu_Tap_PlagueWeapon.cpp" />
+    <ClCompile Include="..\Private\UI_PauseMenu_Tap_Potion.cpp" />
+    <ClCompile Include="..\Private\UI_PauseMenu_Tap_Status.cpp" />
+    <ClCompile Include="..\Private\UI_PlagueWeapon.cpp" />
+    <ClCompile Include="..\Private\VargWeapon.cpp" />
+    <ClCompile Include="..\Private\Water.cpp" />
+    <ClCompile Include="..\Private\Weapon.cpp" />
+    <ClCompile Include="..\Private\Window_AnimationModelView.cpp" />
+    <ClCompile Include="..\Private\Window_AnimationPlayerView.cpp" />
+    <ClCompile Include="..\Private\Window_ComponentView.cpp" />
+    <ClCompile Include="..\Private\Window_EffectEditerView.cpp" />
+    <ClCompile Include="..\Private\Window_EffectHierarchyView.cpp" />
+    <ClCompile Include="..\Private\Window_EffectResourceView.cpp" />
+    <ClCompile Include="..\Private\Window_GameSystem_Dev.cpp" />
+    <ClCompile Include="..\Private\Window_HierarchyView.cpp" />
+    <ClCompile Include="..\Private\Window_Level_Dev.cpp" />
+    <ClCompile Include="..\Private\Window_ModelContantView.cpp" />
+    <ClCompile Include="..\Private\Window_Optimization_Dev.cpp" />
+    <ClCompile Include="..\Private\Window_Player_Dev.cpp" />
+    <ClCompile Include="..\Private\Window_PrototypeView.cpp" />
+    <ClCompile Include="..\Private\Window_RenderTarget_Dev.cpp" />
+    <ClCompile Include="..\Private\Window_Shader_Dev.cpp" />
+    <ClCompile Include="..\Private\Window_TextureEditerView.cpp" />
+    <ClCompile Include="..\Private\Window_UI.cpp" />
+    <ClCompile Include="..\Private\ImGui_Manager.cpp" />
+    <ClCompile Include="..\Private\Level_Edit.cpp" />
+    <ClCompile Include="..\Private\Level_GamePlay.cpp" />
+    <ClCompile Include="..\Private\Level_Loading.cpp" />
+    <ClCompile Include="..\Private\Level_Logo.cpp" />
+    <ClCompile Include="..\Private\Loader.cpp" />
+    <ClCompile Include="..\Private\MainApp.cpp" />
+    <ClCompile Include="..\Private\Player.cpp" />
+    <ClCompile Include="..\Private\UI.cpp" />
+    <ClCompile Include="..\Private\WorldUI.cpp" />
+    <ClCompile Include="..\Public\TestUI.cpp" />
+    <ClCompile Include="Client.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Terrain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Client.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Client.ico" />
+    <Image Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_Deferred.hlsl" />
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_DistortionBlend.hlsl" />
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_EffectMesh.hlsl" />
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_ExtractTexture.hlsl" />
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_HPBar.hlsl" />
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_PostProcessing.hlsl" />
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_UI.hlsl" />
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_UIEffect.hlsl" />
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_VtxAnimModel.hlsl">
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">VS_MAIN</EntryPointName>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">VS_MAIN</EntryPointName>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Effect</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_VtxColor.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Effect</ShaderType>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">VS_MAIN</EntryPointName>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">VS_MAIN</EntryPointName>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_VtxCubeTex.hlsl" />
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_VtxCurve.hlsl" />
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_VtxDecal.hlsl" />
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_VtxGround.hlsl" />
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_VtxInstance.hlsl" />
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_VtxModel.hlsl">
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">VS_MAIN</EntryPointName>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">VS_MAIN</EntryPointName>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Effect</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_VtxModelInstance.hlsl" />
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_VtxNorTex.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Effect</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">VS_MAIN</EntryPointName>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">VS_MAIN</EntryPointName>
+    </FxCompile>
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_VtxPointInstance.hlsl" />
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_VtxTex.hlsl">
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">VS_MAIN</EntryPointName>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">5.0</ShaderModel>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">VS_MAIN</EntryPointName>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Effect</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Effect</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\Bin\ShaderFiles\Shader_XBlur.hlsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Private\Update_Particle.cu" />
+    <None Include="..\Public\Update_Particle.cuh" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 12.0.targets" />
+  </ImportGroup>
+</Project>
